@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Footer from './components/Footer'
 import Card from './components/Card'
+import Login from './components/Login'
 
 import { useState } from 'react'
 
@@ -11,6 +12,7 @@ function App() {
   // in react make everytag as closing
 
   // define state
+  const [password, setPassword] = useState("")
   const [count, setCount] = useState(0)
   //count : variable that we want change
   //setCount : setter methos for count by which we change count
@@ -26,10 +28,60 @@ function App() {
   const[name, setName] = useState("")
   const[dept, setDept] = useState("")
 
+  const submitForm = (e) => {
+    e.preventDefault()
+    // alert("Form Submitted", name, dept)
+    console.log("Form Submitted", name, dept)
+  }
+
+  const keyPress = (e) => {
+    console.log(e.key)
+  }
+
+  const [message, setMessage] = useState("")
   // create a count using event handler and state by which
   //count live length of name dept
+
+
+  //conditional UI rendering in react
   return (
     <>
+    <br/>
+    <h1>{message}</h1>
+    <button 
+        onMouseEnter={() => setMessage("Mouse Entered")}
+        onMouseLeave={() => setMessage("Mouse Left")}
+        onClick={() => setMessage("Mouse Clicked")}
+    >Hover Me</button>
+    <br/>
+    <input type="text" name="name" onKeyDown={keyPress} />
+
+    {/*
+    <br/>
+      <form onSubmit={submitForm}>
+        <p>Name : </p>
+        <textarea type="text" name="name" onChange={(e) => setName(e.target.value)}></textarea>
+        <p>Dept : </p>
+        <textarea type="text" name="dept" onChange={(e) => setDept(e.target.value)}></textarea>
+        <br/>
+        <button type='submit'>Submit</button>
+      </form> */}
+
+      //create a form that take details id email password and print details in console, use state, event and event listener
+      <br/>
+        <form onSubmit={(e) => {
+          e.preventDefault()
+          console.log("Form Submitted", name, dept)
+        }}>
+          <p>User Id : </p>
+          <textarea type="text" name="name" onChange={(e) => setName(e.target.value)}></textarea>
+          <p>Email : </p>
+          <textarea type="text" name="dept" onChange={(e) => setDept(e.target.value)}></textarea>
+          <p>Password : </p>
+          <textarea type="text" name="password" onChange={(e) => setPassword(e.target.value)}></textarea>
+          <br/>
+          <button type='submit'>Submit</button>
+        </form>
       <Navbar />
       <Hero />
 
@@ -41,7 +93,7 @@ function App() {
       <p>Name : </p>
       <textarea type="text" name="name" onChange={(e) => setName(e.target.value)}></textarea>
       <p>Dept : </p>
-      <textarea type="text" name="name" onChange={(e) => setDept(e.target.value)}></textarea>
+      <textarea type="text" name="dept" onChange={(e) => setDept(e.target.value)}></textarea>
 
       {/* <button onClick={() => showMessage("First Event")}>Show Message</button> */}
 
@@ -93,8 +145,10 @@ function App() {
 
           const [count, setCount] = useState(0)
         */}
+      <Login />
       <Footer />
     </>
   );
 }
-  export default App
+
+export default App;
