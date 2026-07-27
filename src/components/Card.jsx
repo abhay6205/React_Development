@@ -13,15 +13,15 @@
 // }
 function Card({name, department, rollno, cgpa, email, skills=[]}) {
   return (
-    <>
-      <h2>Name:- {name}</h2>
-      <p>Department:- {department}</p>
-      <p>Roll No:- {rollno}</p>
-      <p>CGPA:- {cgpa}</p>
-      <p>Email:- {email}</p>
-      <p>Skills:- {skills.join(", ")}</p>
-      <button>Increment CGPA</button>
-    </>
+    <div className="shadow-xl rounded-xl p-5 bg-blue-100">
+      <h2 className="text-xl font-bold">Name:- {name}</h2>
+      <p className="font-bold">Department:- {department}</p>
+      <p className="font-bold">Roll No:- {rollno}</p>
+      <p className="font-bold">CGPA:- {cgpa}</p>
+      <p className="font-bold">Email:- {email}</p>
+      <p className="font-bold">Skills:- {skills.join(", ")}</p>
+      <button className="font-bold mx-auto mt-2 bg-blue-500 text-white rounded-lg p-1 hover:text-blue-500">Increment CGPA</button>
+    </div>
   )
 }
 export default Card
